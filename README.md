@@ -89,6 +89,14 @@ Create a launch.json file and add the envFile:
     ]
 }
 ```
+---
+
+Install black
+
+```bash
+pipenv install black
+```
+
 
 ---
 

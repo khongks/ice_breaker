@@ -1,7 +1,9 @@
-# from langchain import PromptTemplate
 from langchain.prompts import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
+
+from third_party.linkedin import scrape_linkedin_profile
+from third_party.linkedin import scrape_linkedin_profile_gist
 
 information = """
 William Henry Gates III (born October 28, 1955) is an American billionaire, philanthropist, and investor best known for co-founding the software giant Microsoft, along with his childhood friend Paul Allen.[2][3] During his career at Microsoft, Gates held the positions of chairman, chief executive officer (CEO), president, and chief software architect, while also being its largest individual shareholder until May 2014.[4] He was a major entrepreneur of the microcomputer revolution of the 1970s and 1980s.
@@ -14,7 +16,7 @@ Later in his career and since leaving day-to-day operations at Microsoft in 2008
 """
 
 if __name__ == "__main__":
-    print("Hello Langchain")
+    print("Person Profile")
 
     summary_template = """
         given the information {information} about a person from I want you to create: 
@@ -31,4 +33,7 @@ if __name__ == "__main__":
 
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-    print(chain.run(information=information))
+    # linkedin_data = scape_linkedin_profile("https://www.linkedin.com/in/williamhgates/")
+    linkedin_data = scrape_linkedin_profile_gist()
+
+    print(chain.run(information=linkedin_data))
