@@ -4,6 +4,7 @@ from langchain.chains import LLMChain
 
 from third_party.linkedin import scrape_linkedin_profile
 from third_party.linkedin import scrape_linkedin_profile_gist
+from agents.linkedin_lookup_agent import lookup as linked_lookup_agent
 
 information = """
 William Henry Gates III (born October 28, 1955) is an American billionaire, philanthropist, and investor best known for co-founding the software giant Microsoft, along with his childhood friend Paul Allen.[2][3] During his career at Microsoft, Gates held the positions of chairman, chief executive officer (CEO), president, and chief software architect, while also being its largest individual shareholder until May 2014.[4] He was a major entrepreneur of the microcomputer revolution of the 1970s and 1980s.
@@ -17,6 +18,8 @@ Later in his career and since leaving day-to-day operations at Microsoft in 2008
 
 if __name__ == "__main__":
     print("Person Profile")
+
+    linkedin_profile_url = linked_lookup_agent(name="Eden Marco")
 
     summary_template = """
         given the information {information} about a person from I want you to create: 
@@ -33,7 +36,7 @@ if __name__ == "__main__":
 
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-    # linkedin_data = scape_linkedin_profile("https://www.linkedin.com/in/williamhgates/")
-    linkedin_data = scrape_linkedin_profile_gist()
+    linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_profile_url)
+    # linkedin_data = scrape_linkedin_profile_gist()
 
     print(chain.run(information=linkedin_data))

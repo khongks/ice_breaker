@@ -97,6 +97,11 @@ Install black
 pipenv install black
 ```
 
+Install Google Search when using SerpAPI
+```bash
+pipenv install google-search-results
+```
+
 
 ---
 
