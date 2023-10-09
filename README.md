@@ -97,12 +97,6 @@ Install black
 pipenv install black
 ```
 
-Install Google Search when using SerpAPI
-```bash
-pipenv install google-search-results
-```
-
-
 ---
 
 Install openai
@@ -131,4 +125,7 @@ To activate this project's virtualenv, run pipenv shell.
 Alternatively, run a command inside the virtualenv with pipenv run.
 ```
 
-
+Install Google Search when using SerpAPI
+```bash
+pipenv install google-search-results
+```
